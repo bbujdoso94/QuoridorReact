@@ -1,5 +1,6 @@
 import "./App.css";
 import MyWebsocket from "./components/MyWebsocket";
+import { Board } from "./components/Board";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         Added
         <MyWebsocket></MyWebsocket>
       </p>
+      <Board></Board>
     </div>
   );
 }
