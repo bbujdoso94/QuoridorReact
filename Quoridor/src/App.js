@@ -6,10 +6,8 @@ function App() {
   return (
     <div className="App">
       <h1>Base</h1>
-      <p>
-        Added
-        <MyWebsocket></MyWebsocket>
-      </p>
+      Added
+      <MyWebsocket></MyWebsocket>
       <Board></Board>
     </div>
   );

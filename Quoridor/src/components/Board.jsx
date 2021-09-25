@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Cell } from './Cell';
 
 export const Board = () => {
 
@@ -20,18 +21,25 @@ export const Board = () => {
     return (
         <div>
             My board
-            {myBoard.map(x=>
-            <div className="row">{x.map(cell =>{
-                if(cell == 4){
-                    return <div data-col={cell} data-player="player1" className="column"></div>
+            {myBoard.map((x,i)=>
+            <div key={i} className="row">{x.map(cell =>{
+                if(cell === 4){
+                    return <Cell key={cell} cell={cell} player="player1"/>
+                    
+                    // <div key={cell} data-col={cell} data-player="player1" className="column">
+                    //             <div className="cell"></div>
+                    //             <div className="horiz-border"></div>
+                    //             <div className="vertic-border"></div>
+                    //         </div>
                 }
-                if (cell == 76){
-                    return <div data-col={cell} data-player="player2" className="column"></div>
+                if (cell === 76){
+                    return <Cell key={cell} cell={cell} player="player2"/>
                 }
-                return <div onClick={x=>console.log({cell})} data-col={cell} data-player="empty" className="column"></div>
-                
+                return <Cell key={cell} cell={cell} player="empty"/>
             }
-            )}</div>
+            )}
+            </div>
+            
             )}
             
         </div>

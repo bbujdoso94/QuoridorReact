@@ -6,7 +6,9 @@ div.row {
 }
 
 div.column {
-  display: inline-block;
+  display: inline-grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 2fr 1fr;
   margin: 0px;
   width: 50px;
   height: 50px;
@@ -14,10 +16,23 @@ div.column {
   background-color: chocolate;
 }
 
-div.column[data-player="player1"] {
+/* div.cell {
+  display: inline-block;
+  height: 45px;
+  width: 50px;
+} */
+
+div.column [data-player="player1"] {
   background-color: red;
 }
 
 div.column[data-player="player2"] {
   background-color: blue;
 }
+
+/* div.border {
+  background-color: darkblue;
+  display: inline-block;
+  width: 50px;
+  height: 5px;
+} */
