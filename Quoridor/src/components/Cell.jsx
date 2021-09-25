@@ -10,33 +10,46 @@ export const Cell = (props) => {
 
     let rightMost = modulo === 0 ? true : false;
 
-    let lastRow = props.cell >= 72 ? "lastRow" : "";
+    let lastRow = props.cell >= 72 ? true : false;
     
     return (
         <React.Fragment>
 
-            {rightMost      
+            { !rightMost       
 
-            ? 
+            ? !lastRow 
             
-            <div className={`column rightMost ${lastRow}`} data-col={props.cell} data-player={props.player}>
+                ?
+
+                <div className={`column notRightEdge notLastRow`} data-col={props.cell} data-player={props.player}>
+                <div className="cell"></div>
+                <div className="border vertic-border"></div>
+                <div className="border horiz-border"></div>
+                <div className="corner"></div>
+                </div>
+
+                : 
+                    <div className={`column notRightEdge lastRow`} data-col={props.cell} data-player={props.player}>
+                    <div className="cell"></div>
+                    <div className="border vertic-border"></div>
+                    </div>
+
+            :  !lastRow 
             
-            <div className="cell"></div>
-            <div className="border horiz-border"></div>
+                ?
 
-            </div>
+                <div className={`column rightMost notLastRow`} data-col={props.cell} data-player={props.player}>            
+                <div className="cell"></div>
+                <div className="border horiz-border"></div>
+                </div>
+                
+                :
 
-            :     
+                <div className={`column rightMost lastRow`} data-col={props.cell} data-player={props.player}>
+                <div className="cell"></div>
+                </div>
+        }
 
-            <div className={`column notRightEdge ${lastRow}`} data-col={props.cell} data-player={props.player}>
-            
-            <div className="cell"></div>
-            <div className="border vertic-border"></div>
-            <div className="border horiz-border"></div>
-
-            <div className="corner"></div>
-            </div>}
-        
         </React.Fragment>
     )
 }
