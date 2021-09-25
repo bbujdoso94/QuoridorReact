@@ -19,8 +19,7 @@ export const Board = () => {
 
 
     return (
-        <div>
-            My board
+        <div className="board-container">
             {myBoard.map((x,i)=>
             <div key={i} className="row">{x.map(cell =>{
                 if(cell === 4){
