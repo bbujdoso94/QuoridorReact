@@ -3,6 +3,8 @@ import React from 'react'
 
 
 
+
+
 export const Cell = (props) => {
 
     let modulo = (props.cell+1) % 9;
@@ -12,6 +14,9 @@ export const Cell = (props) => {
 
     let lastRow = props.cell >= 72 ? true : false;
     
+    // function move(){
+    //     axios.get("/hello");
+    // }
     return (
         <React.Fragment>
 
@@ -22,7 +27,7 @@ export const Cell = (props) => {
                 ?
 
                 <div className={`column notRightEdge notLastRow`} data-col={props.cell} data-player={props.player}>
-                <div className="cell"></div>
+                <div className="cell" ></div>
                 <div className="border vertic-border"></div>
                 <div className="border horiz-border"></div>
                 <div className="corner"></div>
@@ -30,7 +35,7 @@ export const Cell = (props) => {
 
                 : 
                     <div className={`column notRightEdge lastRow`} data-col={props.cell} data-player={props.player}>
-                    <div className="cell"></div>
+                    <div className="cell" ></div>
                     <div className="border vertic-border"></div>
                     </div>
 
@@ -46,7 +51,7 @@ export const Cell = (props) => {
                 :
 
                 <div className={`column rightMost lastRow`} data-col={props.cell} data-player={props.player}>
-                <div className="cell"></div>
+                <div className="cell" ></div>
                 </div>
         }
 

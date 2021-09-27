@@ -21,7 +21,7 @@ export const MyWebsocket = () => {
             {},
             frame => {
               connected = true;
-              stompClient.subscribe("/topic/greetings", tick => {
+              stompClient.subscribe("/topic/greetings", getResponse => { console.log("kiscica" + JSON.parse(getResponse.body).content)
               });
             },
             error => {
