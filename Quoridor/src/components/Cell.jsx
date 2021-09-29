@@ -7,7 +7,6 @@ export const Cell = (props) => {
 
     let modulo = (props.cell+1) % 9;
 
-
     let rightMost = modulo === 0 ? true : false;
 
     let lastRow = props.cell >= 72 ? true : false;

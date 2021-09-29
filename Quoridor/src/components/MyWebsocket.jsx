@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import SockJS from "sockjs-client";
 import Stomp from "webstomp-client";
+import {GameContext} from "./GameContext";
 
 let connected =false;
 let socket ='';
 let stompClient = '';
+
 
 export const  send = (celldata)=> {
   let send_message = celldata;
@@ -14,6 +16,9 @@ export const  send = (celldata)=> {
   }
 }
 export const MyWebsocket = () => {
+
+  const[gameData, setGameData] = useContext(GameContext);
+
   
         const connect =()=> {
           socket = new SockJS("http://127.0.0.1:8080/gs-guide-websocket");
@@ -22,7 +27,9 @@ export const MyWebsocket = () => {
             {},
             frame => {
               connected = true;
-              stompClient.subscribe("/topic/greetings", data => { console.log("kiscica" + JSON.parse(data.body).content) //define the callback function to decide what happens with the return data
+              stompClient.subscribe("/topic/greetings", data => {setGameData(JSON.parse(data.body).content); //define the callback function to decide what happens with the return data
+              console.log(gameData);
+              console.log(JSON.parse(data.body).content);
               });
             },
             error => {
@@ -46,7 +53,6 @@ export const MyWebsocket = () => {
         Websocket component
         <button onClick={connect}>Connect</button>
         <button onClick={disconnect}>Disconnect</button>
-        <button onClick={send}>Send</button>
         </div>
     )
 }
