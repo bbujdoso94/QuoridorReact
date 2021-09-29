@@ -22,7 +22,7 @@ export const Cell = (props) => {
                 ?
 
                 <div className={`column notRightEdge notLastRow`} data-col={props.cell} data-player={props.player}>
-                <div className="cell" onClick={send}></div>
+                <div className="cell" onClick={() => send(props.cell)}></div>
                 <div className="border vertic-border"></div>
                 <div className="border horiz-border"></div>
                 <div className="corner"></div>
@@ -30,7 +30,7 @@ export const Cell = (props) => {
 
                 : 
                     <div className={`column notRightEdge lastRow`} data-col={props.cell} data-player={props.player}>
-                    <div className="cell" onClick={send}></div>
+                    <div className="cell" onClick={()=>send(props.cell)}></div>
                     <div className="border vertic-border"></div>
                     </div>
 
@@ -39,14 +39,14 @@ export const Cell = (props) => {
                 ?
 
                 <div className={`column rightMost notLastRow`} data-col={props.cell} data-player={props.player}>            
-                <div className="cell" onClick={send}></div>
+                <div className="cell" onClick={()=>send(props.cell)}></div>
                 <div className="border horiz-border"></div>
                 </div>
                 
                 :
 
                 <div className={`column rightMost lastRow`} data-col={props.cell} data-player={props.player}>
-                <div className="cell" onClick={send}></div>
+                <div className="cell" onClick={()=>send(props.cell)}></div>
                 </div>
         }
 

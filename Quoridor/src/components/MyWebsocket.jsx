@@ -6,14 +6,13 @@ let connected =false;
 let socket ='';
 let stompClient = '';
 
-export const  send = ()=> {
-  let send_message = 'My message!';
+export const  send = (celldata)=> {
+  let send_message = celldata;
   if (stompClient && stompClient.connected) {
     const msg = { name: send_message };
     stompClient.send("/app/hello", JSON.stringify(msg), {});
   }
 }
-
 export const MyWebsocket = () => {
   
         const connect =()=> {
