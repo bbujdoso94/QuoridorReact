@@ -2,18 +2,20 @@ import React from "react";
 import SockJS from "sockjs-client";
 import Stomp from "webstomp-client";
 
-export const MyWebsocket = () => {
+let connected =false;
+let socket ='';
+let stompClient = '';
 
-    let connected =false;
-    let socket ='';
-    let stompClient = '';
-    const  send = ()=> {
-           let send_message = 'My message!';
-           if (stompClient && stompClient.connected) {
-             const msg = { name: send_message };
-             stompClient.send("/app/hello", JSON.stringify(msg), {});
-           }
-         }
+export const  send = ()=> {
+  let send_message = 'My message!';
+  if (stompClient && stompClient.connected) {
+    const msg = { name: send_message };
+    stompClient.send("/app/hello", JSON.stringify(msg), {});
+  }
+}
+
+export const MyWebsocket = () => {
+  
         const connect =()=> {
           socket = new SockJS("http://127.0.0.1:8080/gs-guide-websocket");
           stompClient = Stomp.over(socket);
@@ -21,7 +23,7 @@ export const MyWebsocket = () => {
             {},
             frame => {
               connected = true;
-              stompClient.subscribe("/topic/greetings", getResponse => { console.log("kiscica" + JSON.parse(getResponse.body).content)
+              stompClient.subscribe("/topic/greetings", data => { console.log("kiscica" + JSON.parse(data.body).content) //define the callback function to decide what happens with the return data
               });
             },
             error => {
