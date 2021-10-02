@@ -3,7 +3,7 @@ import SockJS from "sockjs-client";
 import Stomp from "webstomp-client";
 import {GameContext} from "./GameContext";
 
-let connected =false;
+//let connected =false;
 let socket ='';
 let stompClient = '';
 
@@ -21,12 +21,12 @@ export const MyWebsocket = () => {
 
   
         const connect =()=> {
-          socket = new SockJS("http://127.0.0.1:8080/gs-guide-websocket");
+          socket = new SockJS("https://dry-mountain-12518.herokuapp.com/");
           stompClient = Stomp.over(socket);
           stompClient.connect(
             {},
             (frame) => {
-              connected = true;
+              //connected = true;
               stompClient.subscribe("/topic/greetings", data => { //define the callback function to decide what happens with the return data
               setGameData(JSON.parse(data.body).content);
               console.log(gameData);
@@ -35,7 +35,7 @@ export const MyWebsocket = () => {
             },
             error => {
               console.log(error);
-              connected = false;
+              //connected = false;
             }
           );
         }
@@ -43,11 +43,11 @@ export const MyWebsocket = () => {
           if (stompClient) {
             stompClient.disconnect();
           }
-          connected = false;
+          //connected = false;
         }
-         const tickleConnection =()=> {
-           connected ? disconnect() : connect();
-         } 
+         //const tickleConnection =()=> {
+         //  connected ? disconnect() : connect();
+         //} 
 
     return (
         <div>
