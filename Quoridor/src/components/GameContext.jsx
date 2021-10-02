@@ -3,7 +3,7 @@ import { createContext, useState } from 'react';
 
 export const GameContext = createContext();
 
-export default function GameProvider(props) {
+export const GameProvider = (props) => {
 
     const [gameData, setGameData] = useState(
         {id: 0}
@@ -15,3 +15,5 @@ export default function GameProvider(props) {
         </GameContext.Provider>
     )
 }
+
+export default GameProvider;
