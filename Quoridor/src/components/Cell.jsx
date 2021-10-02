@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import MyWebsocket from './MyWebsocket';
 import {send} from './MyWebsocket';
+import { GameContext } from './GameContext';
 
 
 export const Cell = (props) => {
+    const [gameData, setGameData] = useContext(GameContext);
 
     let modulo = (props.cell+1) % 9;
 

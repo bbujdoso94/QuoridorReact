@@ -1,8 +1,18 @@
-import React from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { Cell } from './Cell';
+import { GameContext } from './GameContext';
 
 export const Board = () => {
 
+    const [gameData, setGameDate] = useContext(GameContext);
+
+    const [boardState, setBoardState] = useState();
+
+    useEffect(() => {
+        setBoardState(gameData);
+        console.log("boardState set to:");
+        console.log(gameData);
+    }, [gameData]);
 
     let myBoard = [];
 
@@ -13,10 +23,6 @@ export const Board = () => {
         }
         myBoard.push(row);
     }
-
-    //4, 76
-
-
 
     return (
         <div className="board-container">
@@ -40,7 +46,6 @@ export const Board = () => {
             </div>
             
             )}
-            
         </div>
     )
 }
