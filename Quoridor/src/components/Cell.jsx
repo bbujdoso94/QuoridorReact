@@ -11,7 +11,7 @@ const Cell = (props) => {
     // wallType: empty, solid, none
     // id:
     return (
-            <div id ={props.id} className={props.className}></div> 
+            <div onClick={() => send(props.id)} id ={props.id} className={props.className}></div> 
     )
 }
 

@@ -9,7 +9,7 @@ export const Board = () => {
     const [boardState, setBoardState] = useState([]);
 
     useEffect(() => {
-        setBoardState(gameData);
+        setBoardState(JSON.parse(gameData));
         console.log("boardState set to:");
         console.log(gameData);
     }, [gameData]);
@@ -20,7 +20,6 @@ export const Board = () => {
                 return <Cell id={celljson.id} className={`${celljson.type} ${celljson.player} ${celljson.direction} ${celljson.wallType}`}></Cell>
             })}
         </div>
-
         )
     }
 

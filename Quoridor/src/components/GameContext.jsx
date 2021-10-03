@@ -5,21 +5,7 @@ export const GameContext = createContext();
 
 export const GameProvider = (props) => {
 
-    const [gameData, setGameData] = useState([
-        {
-            type:2,
-            player:2,
-            direction:2,
-            wallType:2,
-            id:2
-        },{
-            type:2,
-            player:2,
-            direction:2,
-            wallType:2,
-            id:2
-        }
-    ]);
+    const [gameData, setGameData] = useState('[{"type": "wall"}]');
 
 
     return (
@@ -30,3 +16,17 @@ export const GameProvider = (props) => {
 }
 
 export default GameProvider;
+
+// {
+//     type: "stepField",
+//     player:"player2",
+//     direction: "none",
+//     wallType:"none",
+//     id:"0"
+// },{
+//     type:"wall",
+//     player:"none",
+//     direction:"vertical",
+//     wallType:"empty",
+//     id: "1"
+// }

@@ -49,11 +49,14 @@ export const MyWebsocket = () => {
   } 
 
   return (
+      <>
       <div>
       Websocket component
       <button onClick={connect}>Connect</button>
-      <button onClick={disconnect}>Disconnect</button>
+      <button onClick={disconnect}>Disconnect</button> 
       </div>
+      <br/>
+      </>
   )
 }
 
