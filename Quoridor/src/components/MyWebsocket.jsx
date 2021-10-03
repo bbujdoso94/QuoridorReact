@@ -17,7 +17,7 @@ export const  send = (celldata)=> {
 }
 export const MyWebsocket = () => {
 
-  const[gameData, setGameData] = useContext(GameContext);
+  const[setGameData] = useContext(GameContext);
   
   const connect =()=> {
     socket = new SockJS("https://dry-mountain-12518.herokuapp.com/");
@@ -25,14 +25,14 @@ export const MyWebsocket = () => {
     stompClient.connect(
       {},
       (frame) => {
-        connected = true;
+        //connected = true;
         stompClient.subscribe("/topic/greetings", data => { //define the callback function to decide what happens with the return data
         setGameData(JSON.parse(data.body).content);
         });
       },
       error => {
         console.log(error);
-        connected = false;
+        //connected = false;
       }
     );
   }
@@ -41,12 +41,12 @@ export const MyWebsocket = () => {
     if (stompClient) {
       stompClient.disconnect();
     }
-    connected = false;
+    //connected = false;
   }
 
-  const tickleConnection =()=> {
-    connected ? disconnect() : connect();
-  } 
+  //const tickleConnection =()=> {
+    //connected ? disconnect() : connect();
+  //} 
 
   return (
       <>
