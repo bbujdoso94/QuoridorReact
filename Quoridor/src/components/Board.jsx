@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
-import { Cell } from './Cell';
 import { GameContext } from './GameContext';
-import Cell2 from './Cell2';
+import Cell from './Cell';
 
 export const Board = () => {
 
@@ -18,7 +17,7 @@ export const Board = () => {
     return (
         <div className="container">
             {boardState.map(celljson => {
-                return <Cell2 id={celljson.id} className={`${celljson.type} ${celljson.player} ${celljson.direction} ${celljson.wallType}`}></Cell2>
+                return <Cell id={celljson.id} className={`${celljson.type} ${celljson.player} ${celljson.direction} ${celljson.wallType}`}></Cell>
             })}
         </div>
 
