@@ -1,0 +1,121 @@
+{"allCells": [
+    {
+        "type": "stepField",
+        "player": "player0",
+        "direction:":"none",
+        "wallType":"none",
+        "id":1
+    },
+    {
+        "type":"wall",
+        "player":"player0",
+        "direction":"vertical",
+        "wallType":"empty",
+        "id":2
+    },
+    {
+        "type": "stepField",
+        "player": "player0",
+        "direction:":"none",
+        "wallType":"none",
+        "id":3
+    },
+    {
+        "type":"wall",
+        "player":"player0",
+        "direction":"vertical",
+        "wallType":"empty",
+        "id":4
+    },
+    {
+        "type": "stepField",
+        "player": "player0",
+        "direction:":"none",
+        "wallType":"none",
+        "id":5
+    },
+    {
+        "type":"wall",
+        "player":"player0",
+        "direction":"vertical",
+        "wallType":"empty",
+        "id":6
+    },
+    {
+        "type": "stepField",
+        "player": "player0",
+        "direction:":"none",
+        "wallType":"none",
+        "id":7
+    },
+    {
+        "type":"wall",
+        "player":"player0",
+        "direction":"vertical",
+        "wallType":"empty",
+        "id":8
+    },
+    {
+        "type": "stepField",
+        "player": "player1",
+        "direction:":"none",
+        "wallType":"none",
+        "id":9
+    },
+    {
+        "type":"wall",
+        "player":"player0",
+        "direction":"vertical",
+        "wallType":"empty",
+        "id":10
+    },
+    {
+        "type": "stepField",
+        "player": "player0",
+        "direction:":"none",
+        "wallType":"none",
+        "id":11
+    },
+    {
+        "type":"wall",
+        "player":"player0",
+        "direction":"vertical",
+        "wallType":"empty",
+        "id":12
+    },
+    {
+        "type": "stepField",
+        "player": "player0",
+        "direction:":"none",
+        "wallType":"none",
+        "id":13
+    },
+    {
+        "type":"wall",
+        "player":"player0",
+        "direction":"vertical",
+        "wallType":"empty",
+        "id":14
+    },
+    {
+        "type": "stepField",
+        "player": "player0",
+        "direction:":"none",
+        "wallType":"none",
+        "id":15
+    },
+    {
+        "type":"wall",
+        "player":"player0",
+        "direction":"vertical",
+        "wallType":"empty",
+        "id":16
+    },
+    {
+        "type": "stepField",
+        "player": "player0",
+        "direction:":"none",
+        "wallType":"none",
+        "id":17
+    }
+]}

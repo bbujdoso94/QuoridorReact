@@ -1,46 +1,49 @@
-import React from 'react';
-import { Cell } from './Cell';
+import React, {useState, useEffect, useContext} from 'react';
+import { GameContext } from './GameContext';
+import Cell from './Cell';
+import initBoard from './data/initBoard.json';
+
+
 
 export const Board = () => {
 
+    const [gameData, setGameDate] = useContext(GameContext);
+    const [boardState, setBoardState] = useState(initBoard.allCells);
+    
 
-    let myBoard = [];
-
-    for (let index = 0; index < 9; index++){
-        let row = [];
-        for (let col = 0; col < 9; col++){
-            row.push(col+9*index);
-        }
-        myBoard.push(row);
+    function move(response) {
+        response = JSON.parse(response)
+        const newCell = {"type":"stepField",
+        "player":"player1",
+        "direction":"none",
+        "wallType":"none",
+        "id":response.cellId
+        }    
+        let tmpBoardState = [...boardState];
+        console.log("response: ")
+        console.log(response)
+        tmpBoardState[response[0].cellId] = newCell;
+        console.log("tempboardstate: ");
+        console.log(tmpBoardState)
+        setBoardState(tmpBoardState)
+        console.log("newboardstate  ")
+        console.log(boardState)
     }
-
-    //4, 76
-
-
+    
+    
+    useEffect(() => {
+        move(gameData);
+        //setBoardState(JSON.parse(gameData));
+        console.log("boardState set to:");
+        console.log(gameData);
+    }, [gameData]);
 
     return (
-        <div className="board-container">
-            {myBoard.map((x,i)=>
-            <div key={i} className="row">{x.map(cell =>{
-                if(cell === 4){
-                    return <Cell key={cell} cell={cell} player="player1"/>
-                    
-                    // <div key={cell} data-col={cell} data-player="player1" className="column">
-                    //             <div className="cell"></div>
-                    //             <div className="horiz-border"></div>
-                    //             <div className="vertic-border"></div>
-                    //         </div>
-                }
-                if (cell === 76){
-                    return <Cell key={cell} cell={cell} player="player2"/>
-                }
-                return <Cell key={cell} cell={cell} player="empty"/>
-            }
-            )}
-            </div>
-            
-            )}
-            
+        <div className="container">
+            {boardState.map(celljson => {
+                return <Cell id={celljson.id} className={`${celljson.type} ${celljson.player} ${celljson.direction} ${celljson.wallType}`}></Cell>
+            })}
         </div>
-    )
-}
+        )
+    }
+
