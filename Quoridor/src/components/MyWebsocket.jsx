@@ -9,7 +9,7 @@ let stompClient = '';
 
 
 export const  send = (celldata)=> {
-  let send_message = celldata;
+  let send_message = celldata - 1;
   if (stompClient && stompClient.connected) {
     const msg = { name: send_message };
     stompClient.send("/app/hello", JSON.stringify(msg), {});
