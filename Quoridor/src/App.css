@@ -25,3 +25,6 @@ div.wall {
 width:150px;
   background-color: black;
 }
+div.stepField.player1 {
+  background-color:coral;
+}
