@@ -28,9 +28,6 @@ export const MyWebsocket = () => {
         connected = true;
         stompClient.subscribe("/topic/greetings", data => { //define the callback function to decide what happens with the return data
         setGameData(JSON.parse(data.body).content);
-        // console.log(gameData);
-        console.log("parsed Json:");
-        console.log(JSON.parse(data.body).content);
         });
       },
       error => {

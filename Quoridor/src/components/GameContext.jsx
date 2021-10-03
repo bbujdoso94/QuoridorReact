@@ -5,9 +5,22 @@ export const GameContext = createContext();
 
 export const GameProvider = (props) => {
 
-    const [gameData, setGameData] = useState(
-        {id: 0}
-    );
+    const [gameData, setGameData] = useState([
+        {
+            type:2,
+            player:2,
+            direction:2,
+            wallType:2,
+            id:2
+        },{
+            type:2,
+            player:2,
+            direction:2,
+            wallType:2,
+            id:2
+        }
+    ]);
+
 
     return (
         <GameContext.Provider value={[gameData, setGameData]}>
