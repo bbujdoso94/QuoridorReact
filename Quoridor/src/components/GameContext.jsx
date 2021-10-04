@@ -6,7 +6,7 @@ export const GameContext = createContext();
 
 export const GameProvider = (props) => {
 
-    const [gameData, setGameData] = useState(JSON.stringify(initBoard.allCells));
+    const [gameData, setGameData] = useState(initBoard.allCells);
 
     return (
         <GameContext.Provider value={[gameData, setGameData]}>

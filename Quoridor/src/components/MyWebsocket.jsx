@@ -17,8 +17,7 @@ export const  send = (celldata)=> {
 }
 export const MyWebsocket = () => {
 
-  const [boardState, setBoardState] = useContext(GameContext);
-  const[setGameData] = useContext(GameContext);
+  const [gameState, setGameState] = useContext(GameContext);
 
 
   const connect =()=> {
@@ -29,7 +28,7 @@ export const MyWebsocket = () => {
       (frame) => {
         //connected = true;
         stompClient.subscribe("/topic/greetings", data => { //define the callback function to decide what happens with the return data
-        setGameData(JSON.parse(data.body).content);
+        //setGameState(JSON.parse(data.body).content);
         move(JSON.parse(data.body).content);
         
         });
@@ -42,6 +41,7 @@ export const MyWebsocket = () => {
   }
 
   function move(response) {
+    console.log(gameState)
     response = JSON.parse(response)
     const newCell = {"type":"stepField",
     "player":"player1",
@@ -49,15 +49,14 @@ export const MyWebsocket = () => {
     "wallType":"none",
     "id":response.cellId
     }    
-    let tmpBoardState = [...boardState];
+    let tmpBoardState = [...gameState];
     console.log("response: ")
     console.log(response)
     tmpBoardState[response[0].cellId] = newCell;
     console.log("tempboardstate: ");
     console.log(tmpBoardState)
-    setBoardState(tmpBoardState)
-    console.log("newboardstate  ")
-    console.log(boardState)
+    setGameState(tmpBoardState)
+    console.log("newboardstate  ", gameState)
   }
 
   const disconnect =()=> {
