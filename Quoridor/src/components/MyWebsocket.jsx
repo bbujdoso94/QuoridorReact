@@ -22,7 +22,7 @@ export const MyWebsocket = () => {
 
 
   const connect =()=> {
-    socket = new SockJS("https://dry-mountain-12518.herokuapp.com/");
+    socket = new SockJS("https://dry-mountain-12518.herokuapp.com/gs-guide-websocket");
     stompClient = Stomp.over(socket);
     stompClient.connect(
       {},
