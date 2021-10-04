@@ -17,8 +17,10 @@ export const  send = (celldata)=> {
 }
 export const MyWebsocket = () => {
 
+  const [boardState, setBoardState] = useContext(GameContext);
   const[setGameData] = useContext(GameContext);
-  
+
+
   const connect =()=> {
     socket = new SockJS("https://dry-mountain-12518.herokuapp.com/");
     stompClient = Stomp.over(socket);
@@ -28,6 +30,8 @@ export const MyWebsocket = () => {
         //connected = true;
         stompClient.subscribe("/topic/greetings", data => { //define the callback function to decide what happens with the return data
         setGameData(JSON.parse(data.body).content);
+        move(JSON.parse(data.body).content);
+        
         });
       },
       error => {
@@ -35,6 +39,25 @@ export const MyWebsocket = () => {
         //connected = false;
       }
     );
+  }
+
+  function move(response) {
+    response = JSON.parse(response)
+    const newCell = {"type":"stepField",
+    "player":"player1",
+    "direction":"none",
+    "wallType":"none",
+    "id":response.cellId
+    }    
+    let tmpBoardState = [...boardState];
+    console.log("response: ")
+    console.log(response)
+    tmpBoardState[response[0].cellId] = newCell;
+    console.log("tempboardstate: ");
+    console.log(tmpBoardState)
+    setBoardState(tmpBoardState)
+    console.log("newboardstate  ")
+    console.log(boardState)
   }
 
   const disconnect =()=> {
