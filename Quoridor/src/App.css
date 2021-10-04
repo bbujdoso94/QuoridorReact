@@ -1,30 +1,38 @@
 div {
   display:inline-block;
+  margin-bottom:-6px;
 }
 
 div.stepField {
-height:150px;
-width:150px;
+height:70px;
+width:70px;
 background-color: red;
 }
 
 div.wall.empty.vertical {
-height:150px;
-width:50px;
+height: 70px;
+width:20px;
 background-color: blue;
 }
 
-div.wall.empty.horizontal {
-  height:15px;
-  width:5px;
-  background-color: black;
-  }
-
-div.wall {
-  height:150px;
-width:150px;
-  background-color: black;
-}
 div.stepField.player1 {
-  background-color:coral;
+  height:70px;
+  width: 70px;
+  background-color:yellow;
+}
+
+div.wall.empty.horizontal {
+  height:20px;
+  width:70px;
+  background-color: blue;
+}
+div.corner {
+  height:20px;
+  width:20px;
+  background-color: blue;
+}
+
+div.container {
+  height:790px;
+  width:790px;
 }
