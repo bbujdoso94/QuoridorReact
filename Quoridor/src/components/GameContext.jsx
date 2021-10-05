@@ -16,17 +16,3 @@ export const GameProvider = (props) => {
 }
 
 export default GameProvider;
-
-// {
-//     type: "stepField",
-//     player:"player2",
-//     direction: "none",
-//     wallType:"none",
-//     id:"0"
-// },{
-//     type:"wall",
-//     player:"none",
-//     direction:"vertical",
-//     wallType:"empty",
-//     id: "1"
-// }
