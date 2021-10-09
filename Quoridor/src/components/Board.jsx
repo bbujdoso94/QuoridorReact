@@ -30,7 +30,7 @@ export const Board = (props) => {
             }
             console.log("New cell data : " + newCell)
             let tmpBoardState = [...boardState];
-            for (let i = 0; i<289; i++){
+            for (let i = 0; i<tmpBoardState.length; i++){
                 if(tmpBoardState[i].player ===newCell.player){
                     tmpBoardState[i].player = "player0";
                 }
