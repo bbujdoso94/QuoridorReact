@@ -11,24 +11,6 @@ export const Board = (props) => {
     const [boardState, setBoardState] = useContext(BoardStateContext);
 
 
-    function move (response){
-        prevBoardRef.current = dontUseEffect;
-            const newCell = {"type":"stepField",
-            "player":"player1",
-            "direction":"none",
-            "wallType":"none",
-            "id":response[0].cellId
-            }
-            console.log("New cell data : " + newCell)
-            let tmpBoardState = [...boardState];
-            tmpBoardState[response[0].cellId] = newCell;
-            setBoardState(tmpBoardState)
-            console.log("boardState set to:");
-            console.log(boardState);
-            console.log("gamedata:")
-            console.log(gameData)    
-
-    }
     useEffect(() => {
         console.log("Board useEffect ran.");
         console.log(gameData);
@@ -39,7 +21,26 @@ export const Board = (props) => {
             prevBoardRef.current = "";
             return;
         } else {
-            move()
+            prevBoardRef.current = dontUseEffect;
+            const newCell = {"type":"stepField",
+            "player":response[0].player,
+            "direction":"none",
+            "wallType":"none",
+            "id":response[0].cellId
+            }
+            console.log("New cell data : " + newCell)
+            let tmpBoardState = [...boardState];
+            for (let i = 0; i<289; i++){
+                if(tmpBoardState[i].player ===newCell.player){
+                    tmpBoardState[i].player = "player0";
+                }
+            }
+            tmpBoardState[response[0].cellId] = newCell;
+            setBoardState(tmpBoardState)
+            console.log("boardState set to:");
+            console.log(boardState);
+            console.log("gamedata:")
+            console.log(gameData)    
         }
     },[gameData, boardState, setBoardState])
 
