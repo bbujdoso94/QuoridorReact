@@ -6,7 +6,7 @@ import { GameContext } from './GameContext';
 const Cell = (props) => {
     
     return (
-            <div onClick={() => send(props.id)} id ={props.id} className={props.className}></div> 
+            <div onClick={() => send(props.id,)} id ={props.id} className={props.className}></div> 
     )
 }
 
