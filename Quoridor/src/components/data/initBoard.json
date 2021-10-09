@@ -2,7 +2,7 @@
     {
         "type": "stepField",
         "player": "player0",
-        "direction:":"none",
+        "direction":"none",
         "wallType":"none",
         "id":1
     },
@@ -16,7 +16,7 @@
     {
         "type": "stepField",
         "player": "player0",
-        "direction:":"none",
+        "direction":"none",
         "wallType":"none",
         "id":3
     },
@@ -1817,7 +1817,7 @@
     },
     {
         "type": "stepField",
-        "player": "player1",
+        "player": "player2",
         "direction:":"none",
         "wallType":"none",
         "id":281

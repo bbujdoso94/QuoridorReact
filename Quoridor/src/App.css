@@ -23,6 +23,12 @@ div.stepField.player1 {
   background-color:yellow;
 }
 
+div.stepField.player2 {
+  height:70px;
+  width: 70px;
+  background-color:lightblue;
+}
+
 div.wall.empty.horizontal {
   height:20px;
   width:70px;
