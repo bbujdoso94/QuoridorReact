@@ -4,18 +4,20 @@ import Stomp from "webstomp-client";
 import {GameContext} from "./GameContext";
 import {BoardStateContext} from "./BoardStateContext";
 import {Board} from "./Board";
+import axios from "axios";
 
 
 let connected =false;
 let socket ='';
 let stompClient = '';
+let gameId = 0;
 
 
 export const  send = (celldata)=> {
   let send_message = celldata - 1;
   if (stompClient && stompClient.connected) {
     const msg = { name: send_message};
-    stompClient.send("/app/hello", JSON.stringify(msg), {});
+    stompClient.send("/app/hello/" + gameId, JSON.stringify(msg), {});
   }
 }
 export const MyWebsocket = () => {
@@ -25,16 +27,18 @@ export const MyWebsocket = () => {
   const[boardState, setBoardState] = useContext(BoardStateContext);
 
   const connect =()=> {
+    axios.get("http://127.0.0.1:8080/fetchNextGame")
+    .then(data =>{
+    connected = true;
+    gameId = data.data.gameId;
     socket = new SockJS("http://127.0.0.1:8080/gs-guide-websocket");
     stompClient = Stomp.over(socket);
     stompClient.connect(
       {},
       (frame) => {
-        connected = true;
-        stompClient.subscribe("/topic/greetings", data => { //define the callback function to decide what happens with the return data
-        setGameData(JSON.parse(data.body).content);
-        console.log(data);
-        });
+        stompClient.subscribe("/topic/greetings/" + gameId, data => { 
+        setGameData(JSON.parse(data.body));
+        })});
       },
       error => {
         console.log(error);

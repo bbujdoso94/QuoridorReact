@@ -12,35 +12,25 @@ export const Board = (props) => {
 
 
     useEffect(() => {
-        console.log("Board useEffect ran.");
-        console.log(gameData);
-        let response = JSON.parse(gameData);
-        console.log("visszakapott json response: " + response + response[0].cellId)
-
         if(prevBoardRef.current === dontUseEffect) {
             prevBoardRef.current = "";
             return;
         } else {
             prevBoardRef.current = dontUseEffect;
             const newCell = {"type":"stepField",
-            "player":response[0].player,
+            "player":gameData[0].player,
             "direction":"none",
             "wallType":"none",
-            "id":response[0].cellId
+            "id":gameData[0].cellId
             }
-            console.log("New cell data : " + newCell)
             let tmpBoardState = [...boardState];
             for (let i = 0; i<tmpBoardState.length; i++){
                 if(tmpBoardState[i].player ===newCell.player){
                     tmpBoardState[i].player = "player0";
                 }
             }
-            tmpBoardState[response[0].cellId] = newCell;
-            setBoardState(tmpBoardState)
-            console.log("boardState set to:");
-            console.log(boardState);
-            console.log("gamedata:")
-            console.log(gameData)    
+            tmpBoardState[gameData[0].cellId] = newCell;
+            setBoardState(tmpBoardState)   
         }
     },[gameData, boardState, setBoardState])
 
