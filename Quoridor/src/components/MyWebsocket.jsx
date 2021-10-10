@@ -36,7 +36,9 @@ export const MyWebsocket = () => {
     stompClient.connect(
       {},
       (frame) => {
-        stompClient.subscribe("/topic/greetings/" + gameId, data => { 
+        stompClient.subscribe("/topic/greetings/" + gameId, data => {
+          console.log("DATA ITT ")
+        console.log(data) 
         setGameData(JSON.parse(data.body));
         })});
       },
