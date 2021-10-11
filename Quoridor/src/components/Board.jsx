@@ -18,10 +18,10 @@ export const Board = (props) => {
         } else {
             prevBoardRef.current = dontUseEffect;
             const newCell = {"type":"stepField",
-            "player":gameData[0].player,
+            "player":gameData.player,
             "direction":"none",
             "wallType":"none",
-            "id":gameData[0].cellId
+            "id":gameData.cellId
             }
             let tmpBoardState = [...boardState];
             for (let i = 0; i<tmpBoardState.length; i++){
@@ -29,7 +29,7 @@ export const Board = (props) => {
                     tmpBoardState[i].player = "player0";
                 }
             }
-            tmpBoardState[gameData[0].cellId] = newCell;
+            tmpBoardState[gameData.cellId] = newCell;
             setBoardState(tmpBoardState)   
         }
     },[gameData, boardState, setBoardState])

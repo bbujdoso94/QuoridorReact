@@ -14,9 +14,13 @@ let gameId = 0;
 
 
 export const  send = (celldata)=> {
-  let send_message = celldata - 1;
+  let cellId = celldata - 1;
   if (stompClient && stompClient.connected) {
-    const msg = { name: send_message};
+    const msg = { 
+      cellId: cellId,
+      player:"player1"
+    };
+    console.log(msg);
     stompClient.send("/app/hello/" + gameId, JSON.stringify(msg), {});
   }
 }
