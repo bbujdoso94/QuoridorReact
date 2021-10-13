@@ -1,6 +1,5 @@
 import "./App.css";
 import MyWebsocket from "./components/MyWebsocket";
-import { Board } from "./components/Board";
 import GameProvider from "./components/GameContext"; 
 import BoardStateProvider from "./components/BoardStateContext"
 

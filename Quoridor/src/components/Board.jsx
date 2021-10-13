@@ -29,7 +29,7 @@ export const Board = (props) => {
                     tmpBoardState[i].player = "player0";
                 }
             }
-            tmpBoardState[gameData.cellId] = newCell;
+            tmpBoardState[gameData.cellId-1] = newCell;
             setBoardState(tmpBoardState)   
         }
     },[gameData, boardState, setBoardState])
@@ -39,7 +39,7 @@ export const Board = (props) => {
         <div className="container">
             <h5>{props.input}</h5>
             {boardState.map(celljson => {
-                return <Cell id={celljson.id} className={`${celljson.type} ${celljson.player} ${celljson.direction} ${celljson.wallType}`}></Cell>
+                return <Cell key = {celljson.id} id={celljson.id} className={`${celljson.type} ${celljson.player} ${celljson.direction} ${celljson.wallType}`}></Cell>
             })}
         </div>
         )

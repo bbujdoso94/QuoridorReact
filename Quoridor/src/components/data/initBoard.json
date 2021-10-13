@@ -360,7 +360,7 @@
         "player": "player0",
         "direction":"none",
         "wallType":"none",
-        "id":56
+        "id":55
     },{
         "type": "wall",
         "player": "player0",
