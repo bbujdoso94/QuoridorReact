@@ -9,19 +9,19 @@ import axios from "axios";
 let socket ='';
 let stompClient = '';
 let gameId = 0;
-
+let playerId = "player2";
 
 export const  send = (celldata)=> {
-  console.log("sending");
+  console.log("sending move");
   let cellId = celldata;
   if (stompClient && stompClient.connected) {
     const msg = { 
       cellId: cellId,
-      player:"player2"
+      player:playerId
     };
-
+      console.log("the json sent is : ")
     console.log(msg);
-    stompClient.send("/app/hello/" + gameId, JSON.stringify(msg), {});
+    stompClient.send("/app/game/" + gameId, JSON.stringify(msg), {});
   }
   console.log("Message:");
 }
@@ -39,7 +39,7 @@ export const MyWebsocket = () => {
       stompClient.connect(
       {},
       (frame) => {
-        stompClient.subscribe("/topic/greetings/" + gameId, data => {
+        stompClient.subscribe("/runninggame/" + gameId +"/" + playerId, data => {
           console.log("DATA ITT ")
         console.log(data) 
         setGameData(JSON.parse(data.body));
@@ -56,6 +56,7 @@ export const MyWebsocket = () => {
       console.log("fetching fetch endpoint")
       console.log(data);
     gameId = data.data.boardId;
+    playerId = data.data.player;
 
   }).then(()=>{subscribeToEndpoint()})}
 
