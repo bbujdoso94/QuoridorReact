@@ -32,16 +32,15 @@ export const MyWebsocket = () => {
     const subscribeToEndpoint = () =>{
       socket = new SockJS("http://127.0.0.1:8080/gs-guide-websocket");
       stompClient = Stomp.over(socket);
-      console.log(stompClient);
-      
-      console.log("futok")
-      console.log(stompClient);
       stompClient.connect(
       {},
       (frame) => {
         stompClient.subscribe("/runninggame/" + gameId +"/" + playerId, data => {
           console.log("DATA ITT ")
-        console.log(data) 
+          if(JSON.parse(data.body).invalidMove){
+            alert("Invalid move !")
+            return
+          }
         setGameData(JSON.parse(data.body));
         })},
         error => {
@@ -54,8 +53,7 @@ export const MyWebsocket = () => {
     axios.get("http://127.0.0.1:8080/fetchNextGame")
     .then(data =>{
       console.log("fetching fetch endpoint")
-      console.log(data);
-    gameId = data.data.boardId;
+    gameId = data.data.gameId;
     playerId = data.data.player;
 
   }).then(()=>{subscribeToEndpoint()})}
