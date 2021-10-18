@@ -12,18 +12,14 @@ let gameId = 0;
 let playerId = "player2";
 
 export const  send = (celldata)=> {
-  console.log("sending move");
   let cellId = celldata;
   if (stompClient && stompClient.connected) {
     const msg = { 
       cellId: cellId,
       player:playerId
     };
-      console.log("the json sent is : ")
-    console.log(msg);
     stompClient.send("/app/game/" + gameId, JSON.stringify(msg), {});
   }
-  console.log("Message:");
 }
 export const MyWebsocket = () => {
 
@@ -36,7 +32,6 @@ export const MyWebsocket = () => {
       {},
       (frame) => {
         stompClient.subscribe("/runninggame/" + gameId +"/" + playerId, data => {
-          console.log("DATA ITT ")
           if(JSON.parse(data.body).invalidMove){
             alert("Invalid move !")
             return
@@ -52,10 +47,8 @@ export const MyWebsocket = () => {
   const createGame =()=> {
     axios.get("http://127.0.0.1:8080/fetchNextGame")
     .then(data =>{
-      console.log("fetching fetch endpoint")
     gameId = data.data.gameId;
     playerId = data.data.player;
-
   }).then(()=>{subscribeToEndpoint()})}
 
    const disconnect =()=> {
