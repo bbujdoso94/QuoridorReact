@@ -77,9 +77,54 @@ const Cell = (props) => {
         }
       }
 
+      function validateAndSend(){
+        //Excluding last walls on edges
+        if (props.className.includes("wall")
+        && (props.id >= 274 || props.id % 34 === 0)){
+            alert("invalid move")
+            return;
+        }
+
+        if ((props.className.includes("wall") || props.className.includes("corner"))
+            && props.className.includes("reserved")){
+                alert("invalid move")
+                return;
+        }
+
+        let adjacentCorner = null;
+        let adjacentWall = null;
+
+        //Excluding walls with occupied neighbour
+        if (props.className.includes("wall")
+        && props.className.includes("horizontal")){
+        
+        adjacentCorner = document.getElementById(`${props.id + 1}`);
+        adjacentWall = document.getElementById(`${props.id + 2}`);
+
+        }
+        if (props.className.includes("wall")
+        && props.className.includes("vertical")){
+        
+        adjacentCorner = document.getElementById(`${props.id + 17}`);
+        adjacentWall = document.getElementById(`${props.id + 34}`);
+    
+        }
+
+        if (props.className.includes("wall")
+        
+        && (adjacentCorner.classList.contains("reserved")
+        || adjacentWall.classList.contains("reserved"))){
+            alert("invalid move")
+            return;
+        }    
+
+        send(props.id);
+
+      }
+
     
     return (
-            <div onMouseOver={MouseOver} onMouseOut={MouseOut} onClick={(event) => {send(props.id);MouseOut(event)}} id ={props.id} className={props.className}></div> 
+            <div onMouseOver={MouseOver} onMouseOut={MouseOut} onClick={(event) => {validateAndSend();MouseOut(event)}} id ={props.id} className={props.className}></div> 
     )
 }
 
