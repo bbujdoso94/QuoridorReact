@@ -8,6 +8,14 @@ const Cell = (props) => {
             || props.className.includes("reserved")){
             return;
         }
+
+        //Excluding last walls on edges
+        if (props.className.includes("wall")
+            && (props.id >= 274 || props.id % 34 === 0)){
+                console.log("entered")
+                return;
+        }
+
         let adjacentCorner = null;
         let adjacentWall = null;
 
@@ -51,6 +59,7 @@ const Cell = (props) => {
         event.target.style.border = "";
         if (props.className.includes("wall")
         && ! props.className.includes("reserved")
+        && props.id % 34 !== 0
         && props.className.includes("horizontal")){
             let adjacent = document.getElementById(`${props.id + 1}`);
             adjacent.style.border = "";
@@ -59,6 +68,7 @@ const Cell = (props) => {
         }
         if (props.className.includes("wall")
         && ! props.className.includes("reserved")
+        && props.id < 274
         && props.className.includes("vertical")){
         let adjacentCorner = document.getElementById(`${props.id + 17}`);
         adjacentCorner.style.border = "";
