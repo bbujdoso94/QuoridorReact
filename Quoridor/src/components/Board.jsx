@@ -16,21 +16,81 @@ export const Board = (props) => {
             prevBoardRef.current = "";
             return;
         } else {
+            let newCell = {};
             prevBoardRef.current = dontUseEffect;
-            const newCell = {"type":"stepField",
-            "player":gameData.player,
-            "direction":"none",
-            "wallType":"none",
-            "id":gameData.cellId
+            if (gameData.cellId % 2 === 1 
+                && gameData.cellId % 34 > 0 
+                && gameData.cellId % 34 < 18){
+                newCell = {"type":"stepField",
+                "player":gameData.player,
+                "direction":"none",
+                "wallType":"none",
+                "id":gameData.cellId
             }
-            let tmpBoardState = [...boardState];
-            for (let i = 0; i<tmpBoardState.length; i++){
-                if(tmpBoardState[i].player ===newCell.player){
-                    tmpBoardState[i].player = "player0";
+                let tmpBoardState = [...boardState];
+                for (let i = 0; i<tmpBoardState.length; i++){
+                    if(tmpBoardState[i].player ===newCell.player){
+                        tmpBoardState[i].player = "player0";
+                    }
+            }
+                tmpBoardState[gameData.cellId-1] = newCell;
+                setBoardState(tmpBoardState)
+            } else if (gameData.cellId % 2 === 0
+                && gameData.cellId % 34 > 0 
+                && gameData.cellId % 34 < 18){
+                    newCell = {"type":"wall",
+                    "player": "player0",
+                    "direction":"horizontal",
+                    "wallType":"reserved",
+                    "id":gameData.cellId
                 }
-            }
-            tmpBoardState[gameData.cellId-1] = newCell;
-            setBoardState(tmpBoardState)   
+                    let tmpBoardState = [...boardState];
+                    tmpBoardState[gameData.cellId-1] = newCell;
+                    let corner = {"type":"corner",
+                    "player": "player0",
+                    "direction":"none",
+                    "wallType":"reserved",
+                    "id":`${+gameData.cellId + 17}`
+                    }         
+                    tmpBoardState[+gameData.cellId + 16] = corner;
+                    let nextWall = {"type":"wall",
+                    "player": "player0",
+                    "direction":"horizontal",
+                    "wallType":"reserved",
+                    "id":`${+gameData.cellId + 34}`
+                    }  
+                    tmpBoardState[+gameData.cellId + 33] = nextWall;
+                    setBoardState(tmpBoardState)    
+            
+            //last vertical wall (id % 34 === 0)is invalid move         
+            } else if (gameData.cellId % 34 >= 18){
+                    newCell = {"type":"wall",
+                    "player": "player0",
+                    "direction":"vertical",
+                    "wallType":"reserved",
+                    "id":gameData.cellId
+                    }
+                    let tmpBoardState = [...boardState];
+                    tmpBoardState[gameData.cellId-1] = newCell;
+                    
+                    let corner = {"type":"corner",
+                    "player": "player0",
+                    "direction":"none",
+                    "wallType":"reserved",
+                    "id":`${+gameData.cellId + 1}`
+                    }         
+                    tmpBoardState[+gameData.cellId] = corner;
+                    
+                    let nextWall = {"type":"wall",
+                    "player": "player0",
+                    "direction":"vertical",
+                    "wallType":"reserved",
+                    "id":`${+gameData.cellId + 2}`
+                    }  
+                    tmpBoardState[+gameData.cellId + 1] = nextWall;
+                    setBoardState(tmpBoardState)    
+            }     
+        
         }
     },[gameData, boardState, setBoardState])
 
