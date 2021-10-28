@@ -5,7 +5,6 @@ import {GameContext} from "./GameContext";
 import {Board} from "./Board";
 import axios from "axios";
 
-
 let socket ='';
 let stompClient = '';
 let gameId = 0;
@@ -34,6 +33,9 @@ export const MyWebsocket = () => {
         stompClient.subscribe("/runninggame/" + gameId +"/" + playerId, data => {
           if(JSON.parse(data.body).invalidMove){
             alert("Invalid move !")
+            return
+          } else if (JSON.parse(data.body).winner != null){
+            alert(JSON.parse(data.body).winner)
             return
           }
         setGameData(JSON.parse(data.body));
