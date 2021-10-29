@@ -9,7 +9,6 @@ function App() {
       <GameProvider>
         <div className="App">
             <h1>Base</h1>
-            Added
               <MyWebsocket></MyWebsocket>
               {/* <Board></Board> */}
         </div>

@@ -8,19 +8,20 @@ div {
 div.stepField {
   height: 70px;
   width: 70px;
-  background-color: red;
+  background-color: brown;
 }
 
 div.wall.empty.vertical {
   height: 70px;
   width: 20px;
-  background-color: blue;
+  background-color:chocolate;
 }
 
 div.stepField.player1 {
   height: 70px;
   width: 70px;
-  background-color: yellow;
+  background-image: url("./red.png");
+  background-size: cover;
 }
 
 div.wall.horizontal.reserved {
@@ -44,21 +45,26 @@ div.corner.reserved {
 div.stepField.player2 {
   height: 70px;
   width: 70px;
-  background-color: lightblue;
+  background-image: url("./blue.png");
+  background-size: cover;
 }
 
 div.wall.empty.horizontal {
   height: 20px;
   width: 70px;
-  background-color: blue;
+  background-color: chocolate;
 }
 div.corner {
   height: 20px;
   width: 20px;
-  background-color: blue;
+  background-color: chocolate;
 }
 
 div.container {
   height: 790px;
   width: 790px;
+}
+
+body{
+  background-image: url("./quoridor.jpg");
 }
