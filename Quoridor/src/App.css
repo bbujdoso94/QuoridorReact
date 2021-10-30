@@ -24,19 +24,19 @@ div.stepField.player1 {
   background-size: cover;
 }
 
-div.wall.horizontal.reserved {
+div.wall.horizontal.solid {
   height: 70px;
   width: 20px;
   background-color: orchid;
 }
 
-div.wall.vertical.reserved {
+div.wall.vertical.solid {
   height: 20px;
   width: 70px;
   background-color: orchid;
 }
 
-div.corner.reserved {
+div.corner.solid {
   height: 20px;
   width: 20px;
   background-color: orchid;

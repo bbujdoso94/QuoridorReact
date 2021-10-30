@@ -41,7 +41,7 @@ export const Board = (props) => {
                     newCell = {"type":"wall",
                     "player": "player0",
                     "direction":"horizontal",
-                    "wallType":"reserved",
+                    "wallType":"solid",
                     "id":gameData.cellId
                 }
                     let tmpBoardState = [...boardState];
@@ -49,14 +49,14 @@ export const Board = (props) => {
                     let corner = {"type":"corner",
                     "player": "player0",
                     "direction":"none",
-                    "wallType":"reserved",
+                    "wallType":"solid",
                     "id":`${+gameData.cellId + 17}`
                     }         
                     tmpBoardState[+gameData.cellId + 16] = corner;
                     let nextWall = {"type":"wall",
                     "player": "player0",
                     "direction":"horizontal",
-                    "wallType":"reserved",
+                    "wallType":"solid",
                     "id":`${+gameData.cellId + 34}`
                     }  
                     tmpBoardState[+gameData.cellId + 33] = nextWall;
@@ -67,7 +67,7 @@ export const Board = (props) => {
                     newCell = {"type":"wall",
                     "player": "player0",
                     "direction":"vertical",
-                    "wallType":"reserved",
+                    "wallType":"solid",
                     "id":gameData.cellId
                     }
                     let tmpBoardState = [...boardState];
@@ -76,7 +76,7 @@ export const Board = (props) => {
                     let corner = {"type":"corner",
                     "player": "player0",
                     "direction":"none",
-                    "wallType":"reserved",
+                    "wallType":"solid",
                     "id":`${+gameData.cellId + 1}`
                     }         
                     tmpBoardState[+gameData.cellId] = corner;
@@ -84,7 +84,7 @@ export const Board = (props) => {
                     let nextWall = {"type":"wall",
                     "player": "player0",
                     "direction":"vertical",
-                    "wallType":"reserved",
+                    "wallType":"solid",
                     "id":`${+gameData.cellId + 2}`
                     }  
                     tmpBoardState[+gameData.cellId + 1] = nextWall;
