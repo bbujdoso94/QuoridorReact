@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext,useState} from "react";
 import SockJS from "sockjs-client";
 import Stomp from "webstomp-client";
 import {GameContext} from "./GameContext";
@@ -7,7 +7,7 @@ import axios from "axios";
 
 let socket ='';
 let stompClient = '';
-let gameId = 0;
+let gameIdglob;
 let playerId = "player2";
 
 export const  send = (celldata)=> {
@@ -17,12 +17,14 @@ export const  send = (celldata)=> {
       cellId: cellId,
       player:playerId
     };
-    stompClient.send("/app/game/" + gameId, JSON.stringify(msg), {});
+    stompClient.send("/app/game/" + gameIdglob, JSON.stringify(msg), {});
   }
 }
 export const MyWebsocket = () => {
 
   const setGameData = useContext(GameContext)[1];
+
+  let [gameId,setgameId] = useState(0);
 
     const subscribeToEndpoint = () =>{
       socket = new SockJS("http://127.0.0.1:8080/gs-guide-websocket");
@@ -30,7 +32,7 @@ export const MyWebsocket = () => {
       stompClient.connect(
       {},
       (frame) => {
-        stompClient.subscribe("/runninggame/" + gameId +"/" + playerId, data => {
+        stompClient.subscribe("/runninggame/" + gameIdglob +"/" + playerId, data => {
           if(JSON.parse(data.body).invalidMove){
             alert("Invalid move !")
             return
@@ -49,7 +51,8 @@ export const MyWebsocket = () => {
   const createGame =()=> {
     axios.get("http://127.0.0.1:8080/fetchNextGame")
     .then(data =>{
-    gameId = data.data.gameId;
+    gameId = setgameId(data.data.gameId);
+    gameIdglob = data.data.gameId;
     playerId = data.data.player;
   }).then(()=>{subscribeToEndpoint()})}
 
@@ -61,12 +64,14 @@ export const MyWebsocket = () => {
 
   function addGameId(inputGameId){
     console.log(inputGameId);
-    gameId = inputGameId;
+    gameIdglob = inputGameId;
+    gameId = setgameId(inputGameId);
   }
 
   return (
       <>
       <div className="websocketComponents">
+      <h1 className="gameIdDiv">{gameId}</h1>
       <button onClick={createGame}>Create Game</button><br/>
       <input placeholder = "Game ID" onChange={(e)=>addGameId(e.target.value)}></input>
       <br></br>
