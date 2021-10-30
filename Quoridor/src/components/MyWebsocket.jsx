@@ -66,15 +66,15 @@ export const MyWebsocket = () => {
 
   return (
       <>
-      <div>
+      <div className="websocketComponents">
       Websocket component
       <button onClick={createGame}>Create Game</button><br/>
       <input onChange={(e)=>addGameId(e.target.value)}></input>
       <button onClick={subscribeToEndpoint}>Join Game</button>
       <button onClick={disconnect}>Disconnect</button> 
       <br></br>
-      <Board></Board>
       </div>
+      <Board></Board>
       <br/>
       </>
   )

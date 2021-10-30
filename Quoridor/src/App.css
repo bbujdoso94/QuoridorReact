@@ -67,4 +67,12 @@ div.container {
 
 body{
   background-image: url("./quoridor.jpg");
+  background-size: cover;
+  margin:0 25%;
+}
+
+div.websocketComponents {
+  position: fixed;
+  left: 10px;
+  top: 300px;
 }
