@@ -34,7 +34,7 @@ export const MyWebsocket = () => {
       (frame) => {
         stompClient.subscribe("/runninggame/" + gameIdglob +"/" + playerId, data => {
           if(JSON.parse(data.body).invalidMove){
-            alert("Invalid move !")
+            alert(JSON.parse(data.body).errorMsg)
             return
           } else if (JSON.parse(data.body).winner != null){
             alert(JSON.parse(data.body).winner)
