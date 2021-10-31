@@ -2,6 +2,8 @@ import React, {useEffect, useContext, useRef} from 'react';
 import { GameContext } from './GameContext';
 import { BoardStateContext } from './BoardStateContext';
 import Cell from './Cell';
+import { disconnect } from './MyWebsocket';
+import { Link } from 'react-router-dom';
 
 export const Board = (props) => {
 
@@ -101,6 +103,9 @@ export const Board = (props) => {
             {boardState.map(celljson => {
                 return <Cell key = {celljson.id} id={celljson.id} className={`${celljson.type} ${celljson.player} ${celljson.direction} ${celljson.wallType}`}></Cell>
             })}
+            <Link to="/">
+                <button onClick={disconnect}>Disconnect</button> 
+            </Link>
         </div>
         )
     }

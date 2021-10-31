@@ -4,6 +4,8 @@ import Stomp from "webstomp-client";
 import {GameContext} from "./GameContext";
 import {Board} from "./Board";
 import axios from "axios";
+import { Link } from 'react-router-dom';
+
 
 let socket ='';
 let stompClient = '';
@@ -20,6 +22,13 @@ export const  send = (celldata)=> {
     stompClient.send("/app/game/" + gameIdglob, JSON.stringify(msg), {});
   }
 }
+
+export const disconnect = () => {
+  if (stompClient) {
+    stompClient.disconnect();
+  }
+}
+
 export const MyWebsocket = () => {
 
   const setGameData = useContext(GameContext)[1];
@@ -56,12 +65,6 @@ export const MyWebsocket = () => {
     playerId = data.data.player;
   }).then(()=>{subscribeToEndpoint()})}
 
-   const disconnect =()=> {
-    if (stompClient) {
-      stompClient.disconnect();
-    }
-  }
-
   function addGameId(inputGameId){
     console.log(inputGameId);
     gameIdglob = inputGameId;
@@ -72,14 +75,16 @@ export const MyWebsocket = () => {
       <>
       <div className="websocketComponents">
       <h1 className="gameIdDiv">{gameId}</h1>
-      <button onClick={createGame}>Create Game</button><br/>
+      <Link to="/game">
+        <button onClick={createGame}>Create Game</button><br/>
+      </Link>
       <input placeholder = "Game ID" onChange={(e)=>addGameId(e.target.value)}></input>
       <br></br>
-      <button onClick={subscribeToEndpoint}>Join Game</button>
-      <button onClick={disconnect}>Disconnect</button> 
+      <Link to="/game">
+        <button onClick={subscribeToEndpoint}>Join Game</button>
+      </Link>
       <br></br>
       </div>
-      {/* <Board></Board> */}
       <br/>
       </>
   )
