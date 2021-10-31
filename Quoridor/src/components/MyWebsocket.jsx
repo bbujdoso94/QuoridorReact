@@ -79,7 +79,7 @@ export const MyWebsocket = () => {
       <button onClick={disconnect}>Disconnect</button> 
       <br></br>
       </div>
-      <Board></Board>
+      {/* <Board></Board> */}
       <br/>
       </>
   )
