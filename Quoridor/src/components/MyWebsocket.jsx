@@ -6,7 +6,7 @@ import {Board} from "./Board";
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import { GameIDContext } from "./GameIDContext";
-//import GameIDProvider from "./GameIDContext";
+import GameIDProvider from "./GameIDContext";
 
 
 
@@ -34,7 +34,7 @@ export const disconnect = () => {
 
 export const MyWebsocket = () => {
 
-//  const [ContextGameID, setContextGameID] = useContext(GameIDContext);
+  const [ContextGameID, setContextGameID] = useContext(GameIDContext);
 
   const setGameData = useContext(GameContext)[1];
 
@@ -68,7 +68,7 @@ export const MyWebsocket = () => {
     gameId = setgameId(data.data.gameId);
     gameIdglob = data.data.gameId;
     playerId = data.data.player;
-//    setContextGameID(data.data.gameId);
+    setContextGameID(data.data.gameId);
   }).then(()=>{subscribeToEndpoint()})}
 
   function addGameId(inputGameId){

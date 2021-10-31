@@ -3,15 +3,15 @@ import { createContext, useState } from 'react'
 
 export const GameIDContext = createContext();
 
-const GameIDPovider = (props) => {
-    const [gameID, setGameID] = useState(0);
+export const GameIDPovider = (props) => {
+    const [gameID, setGameID] = useState();
 
     return (
-        <GameIDPovider value={[gameID, setGameID]}>
+        <GameIDContext.Provider value={[gameID, setGameID]}>
             <div>
                 {props.children}
             </div>
-        </GameIDPovider>
+        </GameIDContext.Provider>
     )
 }
 
