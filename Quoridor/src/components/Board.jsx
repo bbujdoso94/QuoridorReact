@@ -102,7 +102,7 @@ export const Board = (props) => {
 
     return (
         <div className="container">
-            <h1>{gameID}</h1>
+            <h1>Game id: {gameID}</h1>
             {boardState.map(celljson => {
                 return <Cell key = {celljson.id} id={celljson.id} className={`${celljson.type} ${celljson.player} ${celljson.direction} ${celljson.wallType}`}></Cell>
             })}
