@@ -5,7 +5,7 @@ const Cell = (props) => {
 
     function MouseOver(event) {
         if (props.className.includes("corner")
-            || props.className.includes("reserved")){
+            || props.className.includes("solid")){
             return;
         }
 
@@ -39,8 +39,8 @@ const Cell = (props) => {
             event.target.style.border = "4px solid yellow";
         }
         if (props.className.includes("wall")){
-            if ( ! adjacentCorner.classList.contains("reserved")
-                && ! adjacentWall.classList.contains("reserved")){
+            if ( ! adjacentCorner.classList.contains("solid")
+                && ! adjacentWall.classList.contains("solid")){
                 event.target.style.boxSizing="border-box";
                 event.target.style.border = "4px solid yellow";
                 adjacentCorner.style.boxSizing="border-box";
@@ -58,7 +58,7 @@ const Cell = (props) => {
         event.target.style.boxSizing="";
         event.target.style.border = "";
         if (props.className.includes("wall")
-        && ! props.className.includes("reserved")
+        && ! props.className.includes("solid")
         && props.id % 34 !== 0
         && props.className.includes("horizontal")){
             let adjacent = document.getElementById(`${props.id + 1}`);
@@ -67,7 +67,7 @@ const Cell = (props) => {
             adjacentWall.style.border = "";
         }
         if (props.className.includes("wall")
-        && ! props.className.includes("reserved")
+        && ! props.className.includes("solid")
         && props.id < 274
         && props.className.includes("vertical")){
         let adjacentCorner = document.getElementById(`${props.id + 17}`);
@@ -86,7 +86,7 @@ const Cell = (props) => {
         }
 
         if ((props.className.includes("wall") || props.className.includes("corner"))
-            && props.className.includes("reserved")){
+            && props.className.includes("solid")){
                 alert("invalid move")
                 return;
         }
@@ -112,8 +112,8 @@ const Cell = (props) => {
 
         if (props.className.includes("wall")
         
-        && (adjacentCorner.classList.contains("reserved")
-        || adjacentWall.classList.contains("reserved"))){
+        && (adjacentCorner.classList.contains("solid")
+        || adjacentWall.classList.contains("solid"))){
             alert("invalid move")
             return;
         }    
