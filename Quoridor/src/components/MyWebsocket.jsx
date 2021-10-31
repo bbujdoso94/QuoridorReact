@@ -5,6 +5,9 @@ import {GameContext} from "./GameContext";
 import {Board} from "./Board";
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import { GameIDContext } from "./GameIDContext";
+//import GameIDProvider from "./GameIDContext";
+
 
 
 let socket ='';
@@ -12,14 +15,14 @@ let stompClient = '';
 let gameIdglob;
 let playerId = "player2";
 
-export const  send = (celldata)=> {
+export const send = (celldata, gameID)=> {
   let cellId = celldata;
   if (stompClient && stompClient.connected) {
     const msg = { 
       cellId: cellId,
       player:playerId
     };
-    stompClient.send("/app/game/" + gameIdglob, JSON.stringify(msg), {});
+    stompClient.send("/app/game/" + gameID, JSON.stringify(msg), {});
   }
 }
 
@@ -30,6 +33,8 @@ export const disconnect = () => {
 }
 
 export const MyWebsocket = () => {
+
+//  const [ContextGameID, setContextGameID] = useContext(GameIDContext);
 
   const setGameData = useContext(GameContext)[1];
 
@@ -63,6 +68,7 @@ export const MyWebsocket = () => {
     gameId = setgameId(data.data.gameId);
     gameIdglob = data.data.gameId;
     playerId = data.data.player;
+//    setContextGameID(data.data.gameId);
   }).then(()=>{subscribeToEndpoint()})}
 
   function addGameId(inputGameId){
@@ -73,19 +79,19 @@ export const MyWebsocket = () => {
 
   return (
       <>
-      <div className="websocketComponents">
-      <h1 className="gameIdDiv">{gameId}</h1>
-      <Link to="/game">
-        <button onClick={createGame}>Create Game</button><br/>
-      </Link>
-      <input placeholder = "Game ID" onChange={(e)=>addGameId(e.target.value)}></input>
-      <br></br>
-      <Link to="/game">
-        <button onClick={subscribeToEndpoint}>Join Game</button>
-      </Link>
-      <br></br>
-      </div>
-      <br/>
+          <div className="websocketComponents">
+            <h1 className="gameIdDiv">{gameId}</h1>
+            <Link to="/game">
+              <button onClick={createGame}>Create Game</button><br/>
+            </Link>
+            <input placeholder = "Game ID" onChange={(e)=>addGameId(e.target.value)}></input>
+            <br></br>
+            <Link to="/game">
+              <button onClick={subscribeToEndpoint}>Join Game</button>
+            </Link>
+            <br></br>
+          </div>
+          <br/>
       </>
   )
 }
