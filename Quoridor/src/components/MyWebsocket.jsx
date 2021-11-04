@@ -74,7 +74,7 @@ export const MyWebsocket = () => {
   function addGameId(inputGameId){
     console.log(inputGameId);
     gameIdglob = inputGameId;
-    gameId = setgameId(inputGameId);
+    setContextGameID(inputGameId);
   }
 
   return (
@@ -84,7 +84,7 @@ export const MyWebsocket = () => {
             <Link to="/game">
               <button onClick={createGame}>Create Game</button><br/>
             </Link>
-            <input placeholder = "Game ID" onChange={(e)=>addGameId(e.target.value)}></input>
+            <input id="gameIDInput" placeholder = "Game ID" onChange={(e)=>addGameId(e.target.value)}></input>
             <br></br>
             <Link to="/game">
               <button onClick={subscribeToEndpoint}>Join Game</button>
