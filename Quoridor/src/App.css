@@ -16,10 +16,10 @@ div.wall.empty.vertical {
   background-color:whitesmoke;
 }
 
-div.stepField.player1 {/**/
+div.stepField.player1 {
   height: 10%;
   width: 10%;
-  background-image: url("./red.png");
+  background-image: url("./player1.png");
   background-size: cover;
 }
 
@@ -44,7 +44,7 @@ div.corner.solid {
 div.stepField.player2 {
   height: 10%;
   width: 10%;
-  background-image: url("./blue.png");
+  background-image: url("./player2.png");
   background-size: cover;
 }
 
