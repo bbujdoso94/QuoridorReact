@@ -66,7 +66,7 @@ div.container {
 }
 
 body{
-  /*background-image: url("./quoridor.jpg");*/
+  background-image: url("./background.png");
   background-size: cover;
   margin:0 25%;
 }
@@ -129,26 +129,27 @@ button:active {
 button.joinGameButton {
   position:fixed;
   top:50%;
-  left:55%;
+  left: 35%;
 }
 
 button.createGameButton {
   position:fixed;
   top:25%;
-  left:50%;
+  left: 25%;
 }
 
 input.inputForGameId{
   position:fixed;
   top:50%;
-  left:50%;
+  left:25%;
   width:80px;
   height:40px;
 }
 
 h1.headerForMainPage{
   position:fixed;
-  left:50%;
+  font-size: 30px;
+  left:25%;
   top:35%;
 
 }

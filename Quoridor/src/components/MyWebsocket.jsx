@@ -82,7 +82,7 @@ export const MyWebsocket = () => {
             <Link to="/game">
               <button onClick={createGame}className="createGameButton">Create Game</button><br/>
             </Link>
-            <h1 className="headerForMainPage"> OR: </h1>
+            <h1 className="headerForMainPage"> Or enter Game ID: </h1>
             <input className = "inputForGameId" id="gameIDInput" placeholder = "Game ID" onChange={(e)=>addGameId(e.target.value)}></input>
             <br></br>
             <Link to="/game">
