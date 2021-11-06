@@ -1,7 +1,10 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {send} from './MyWebsocket';
+import { GameIDContext } from "./GameIDContext";
 
 const Cell = (props) => {
+
+    const [gameID, setGameID] = useContext(GameIDContext);
 
     function MouseOver(event) {
         if (props.className.includes("corner")
@@ -118,7 +121,8 @@ const Cell = (props) => {
             return;
         }    
 
-        send(props.id);
+        send(props.id, gameID);
+        //send(props.id, 1);
 
       }
 

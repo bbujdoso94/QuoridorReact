@@ -2,9 +2,14 @@ import React, {useEffect, useContext, useRef} from 'react';
 import { GameContext } from './GameContext';
 import { BoardStateContext } from './BoardStateContext';
 import Cell from './Cell';
+import { disconnect } from './MyWebsocket';
+import { Link } from 'react-router-dom';
+import { GameIDContext } from "./GameIDContext";
+
 
 export const Board = (props) => {
 
+    const [gameID, setGameID] = useContext(GameIDContext);
     const dontUseEffect = "don't useEffect";
     const prevBoardRef = useRef(dontUseEffect);
     const [gameData] = useContext(GameContext);
@@ -97,10 +102,13 @@ export const Board = (props) => {
 
     return (
         <div className="container">
-            <h5>{props.input}</h5>
+            <h1>Game id: {gameID}</h1>
             {boardState.map(celljson => {
                 return <Cell key = {celljson.id} id={celljson.id} className={`${celljson.type} ${celljson.player} ${celljson.direction} ${celljson.wallType}`}></Cell>
             })}
+            <Link to="/">
+                <button onClick={disconnect}>Disconnect</button> 
+            </Link>
         </div>
         )
     }
