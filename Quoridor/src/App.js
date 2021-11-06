@@ -2,7 +2,7 @@ import "./App.css";
 import MyWebsocket from "./components/MyWebsocket";
 import GameProvider from "./components/GameContext";
 import BoardStateProvider from "./components/BoardStateContext";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route} from "react-router-dom";
 import { Board } from "./components/Board";
 import GameIDProvider from "./components/GameIDContext";
 

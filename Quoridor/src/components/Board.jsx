@@ -9,7 +9,7 @@ import { GameIDContext } from "./GameIDContext";
 
 export const Board = (props) => {
 
-    const [gameID, setGameID] = useContext(GameIDContext);
+    const [gameID] = useContext(GameIDContext);
     const dontUseEffect = "don't useEffect";
     const prevBoardRef = useRef(dontUseEffect);
     const [gameData] = useContext(GameContext);

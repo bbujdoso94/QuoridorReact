@@ -4,7 +4,7 @@ import { GameIDContext } from "./GameIDContext";
 
 const Cell = (props) => {
 
-    const [gameID, setGameID] = useContext(GameIDContext);
+    const [gameID] = useContext(GameIDContext);
 
     function MouseOver(event) {
         if (props.className.includes("corner")
