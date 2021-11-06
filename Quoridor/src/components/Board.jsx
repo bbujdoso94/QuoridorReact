@@ -5,6 +5,7 @@ import Cell from './Cell';
 import { disconnect } from './MyWebsocket';
 import { Link } from 'react-router-dom';
 import { GameIDContext } from "./GameIDContext";
+import App from '../App';
 
 
 export const Board = (props) => {
@@ -101,8 +102,9 @@ export const Board = (props) => {
 
 
     return (
-        <div className="container">
-            <h1>Game id: {gameID}</h1>
+        <>
+        <h1>Game id: {gameID}</h1>
+        <div className="container">           
             {boardState.map(celljson => {
                 return <Cell key = {celljson.id} id={celljson.id} className={`${celljson.type} ${celljson.player} ${celljson.direction} ${celljson.wallType}`}></Cell>
             })}
@@ -110,6 +112,8 @@ export const Board = (props) => {
                 <button onClick={disconnect}>Disconnect</button> 
             </Link>
         </div>
+        <footer className="footer">Disclaimer: This is a fan-made game based on Quoridor</footer>
+        </>
         )
     }
 

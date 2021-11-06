@@ -152,5 +152,16 @@ h1.headerForMainPage{
   top:35%;
 
 }
+.footer {  
+  position:fixed;  
+  left: 10px;  
+  bottom: 5px;  
+  right: 10px;   
+  width: 100%;  
+  color: black;  
+  text-align: center;
+}
+
+
 
 

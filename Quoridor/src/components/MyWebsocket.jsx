@@ -89,6 +89,7 @@ export const MyWebsocket = () => {
               <button onClick={subscribeToEndpoint}className="joinGameButton">Join Game</button>
             </Link>
             <br></br>
+            <footer className="footer">Disclaimer: This is a fan-made game based on Quoridor</footer>
           </div>
           <br/>
       </>
