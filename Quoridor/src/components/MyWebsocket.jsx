@@ -80,12 +80,13 @@ export const MyWebsocket = () => {
       <>
           <div className="websocketComponents">
             <Link to="/game">
-              <button onClick={createGame}>Create Game</button><br/>
+              <button onClick={createGame}className="createGameButton">Create Game</button><br/>
             </Link>
-            <input id="gameIDInput" placeholder = "Game ID" onChange={(e)=>addGameId(e.target.value)}></input>
+            <h1 className="headerForMainPage"> OR: </h1>
+            <input className = "inputForGameId" id="gameIDInput" placeholder = "Game ID" onChange={(e)=>addGameId(e.target.value)}></input>
             <br></br>
             <Link to="/game">
-              <button onClick={subscribeToEndpoint}>Join Game</button>
+              <button onClick={subscribeToEndpoint}className="joinGameButton">Join Game</button>
             </Link>
             <br></br>
           </div>
