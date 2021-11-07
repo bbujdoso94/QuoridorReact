@@ -20,7 +20,7 @@ export const send = (celldata, gameID)=> {
       cellId: cellId,
       player:playerId
     };
-    stompClient.send("https://vast-river-12441.herokuapp.com/app/game/" + gameID, JSON.stringify(msg), {});
+    stompClient.send("/app/game/" + gameID, JSON.stringify(msg), {});
   }
 }
 
