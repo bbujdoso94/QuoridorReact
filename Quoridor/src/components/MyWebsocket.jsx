@@ -42,7 +42,7 @@ export const MyWebsocket = () => {
       stompClient.connect(
       {},
       (frame) => {
-        stompClient.subscribe("https://vast-river-12441.herokuapp.com//runninggame/" + gameIdglob +"/" + playerId, data => {
+        stompClient.subscribe("https://vast-river-12441.herokuapp.com/runninggame/" + gameIdglob +"/" + playerId, data => {
           if(JSON.parse(data.body).invalidMove){
             alert(JSON.parse(data.body).errorMsg)
             return
