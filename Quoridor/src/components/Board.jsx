@@ -5,7 +5,6 @@ import Cell from './Cell';
 import { disconnect } from './MyWebsocket';
 import { Link } from 'react-router-dom';
 import { GameIDContext } from "./GameIDContext";
-import App from '../App';
 
 
 export const Board = (props) => {

@@ -1,4 +1,4 @@
-import React, {useContext,useState} from "react";
+import React, {useContext} from "react";
 import SockJS from "sockjs-client";
 import Stomp from "webstomp-client";
 import {GameContext} from "./GameContext";
@@ -36,7 +36,7 @@ export const MyWebsocket = () => {
 
   const setGameData = useContext(GameContext)[1];
 
-  let setgameId = useState(0)[1];
+  // let setgameId = useState(0)[1];
 
     const subscribeToEndpoint = () =>{
       socket = new SockJS("http://127.0.0.1:8080/gs-guide-websocket");
@@ -64,7 +64,7 @@ export const MyWebsocket = () => {
   const createGame =()=> {
     axios.get("http://127.0.0.1:8080/fetchNextGame")
     .then(data =>{
-    setgameId(data.data.gameId);
+    // setgameId(data.data.gameId);
     gameIdglob = data.data.gameId;
     playerId = data.data.player;
     setContextGameID(data.data.gameId);
