@@ -20,7 +20,7 @@ export const send = (celldata, gameID)=> {
       cellId: cellId,
       player:playerId
     };
-    stompClient.send("/app/game/" + gameID, JSON.stringify(msg), {});
+    stompClient.send("https://vast-river-12441.herokuapp.com/app/game/" + gameID, JSON.stringify(msg), {});
   }
 }
 
@@ -36,15 +36,13 @@ export const MyWebsocket = () => {
 
   const setGameData = useContext(GameContext)[1];
 
-  // let setgameId = useState(0)[1];
-
     const subscribeToEndpoint = () =>{
-      socket = new SockJS("http://127.0.0.1:8080/gs-guide-websocket");
+      socket = new SockJS("https://vast-river-12441.herokuapp.com/gs-guide-websocket");
       stompClient = Stomp.over(socket);
       stompClient.connect(
       {},
       (frame) => {
-        stompClient.subscribe("/runninggame/" + gameIdglob +"/" + playerId, data => {
+        stompClient.subscribe("https://vast-river-12441.herokuapp.com//runninggame/" + gameIdglob +"/" + playerId, data => {
           if(JSON.parse(data.body).invalidMove){
             alert(JSON.parse(data.body).errorMsg)
             return
@@ -62,9 +60,8 @@ export const MyWebsocket = () => {
       
 
   const createGame =()=> {
-    axios.get("http://127.0.0.1:8080/fetchNextGame")
+    axios.get("https://vast-river-12441.herokuapp.com/fetchNextGame")
     .then(data =>{
-    // setgameId(data.data.gameId);
     gameIdglob = data.data.gameId;
     playerId = data.data.player;
     setContextGameID(data.data.gameId);
