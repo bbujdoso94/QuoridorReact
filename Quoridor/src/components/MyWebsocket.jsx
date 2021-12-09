@@ -76,6 +76,12 @@ export const MyWebsocket = () => {
   return (
       <>
           <div className="websocketComponents">
+          <div className ="explUseOfSite"> Hello Quoridor gamer! As you can see, there are 2 options to start a game here:
+            <ul>
+              <li>Create a new game, and you will be given a GameId, which you can share with your friend.</li>
+              <li>Use the GameId that your friend gave you to join an existing game!</li>
+            </ul>
+          </div>
             <Link to="/game">
               <button onClick={createGame}className="createGameButton">Create Game</button><br/>
             </Link>
@@ -86,6 +92,9 @@ export const MyWebsocket = () => {
               <button onClick={subscribeToEndpoint}className="joinGameButton">Join Game</button>
             </Link>
             <br></br>
+            <div className = "gameRules">
+              You can find the official game rules here : <a href="https://www.ultraboardgames.com/quoridor/game-rules.php">GameRules</a>
+            </div>
             <footer className="footer">Disclaimer: This is a fan-made game based on Quoridor</footer>
           </div>
           <br/>

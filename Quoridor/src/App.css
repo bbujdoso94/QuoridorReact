@@ -134,8 +134,22 @@ button.joinGameButton {
 
 button.createGameButton {
   position:fixed;
-  top:25%;
-  left: 25%;
+  top:50%;
+  left: 45%;
+}
+
+div.explUseOfSite{
+  position: fixed;
+  top:7%;
+  left:8%;
+  font-size: 30px;
+}
+
+div.gameRules{
+  position: fixed;
+  top:70%;
+  left:8%;
+  font-size: 30px;
 }
 
 input.inputForGameId{
