@@ -37,7 +37,7 @@ export const MyWebsocket = () => {
   const setGameData = useContext(GameContext)[1];
 
     const subscribeToEndpoint = () =>{
-      socket = new SockJS("https://vast-river-12441.herokuapp.com/gs-guide-websocket");
+      socket = new SockJS("http://localhost:8080/gs-guide-websocket");
       stompClient = Stomp.over(socket);
       stompClient.connect(
       {},
@@ -51,6 +51,7 @@ export const MyWebsocket = () => {
             disconnect();
             window.location.href="/";
           }
+        console.log("itt a response te " + JSON.parse(data.body));
         setGameData(JSON.parse(data.body));
         })},
         error => {
@@ -60,7 +61,7 @@ export const MyWebsocket = () => {
       
 
   const createGame =()=> {
-    axios.get("https://vast-river-12441.herokuapp.com/fetchNextGame")
+    axios.get("http://localhost:8080/fetchNextGame")
     .then(data =>{
     gameIdglob = data.data.gameId;
     playerId = data.data.player;

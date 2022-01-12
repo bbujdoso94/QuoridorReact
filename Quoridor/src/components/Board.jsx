@@ -5,6 +5,7 @@ import Cell from './Cell';
 import { disconnect } from './MyWebsocket';
 import { Link } from 'react-router-dom';
 import { GameIDContext } from "./GameIDContext";
+import WallDisplay from './WallDisplay';
 
 
 export const Board = (props) => {
@@ -15,7 +16,7 @@ export const Board = (props) => {
     const [gameData] = useContext(GameContext);
     const [boardState, setBoardState] = useContext(BoardStateContext);
 
-
+  
     useEffect(() => {
         if(prevBoardRef.current === dontUseEffect) {
             prevBoardRef.current = "";
@@ -111,6 +112,7 @@ export const Board = (props) => {
                 <button onClick={disconnect}>Disconnect</button> 
             </Link>
         </div>
+        <WallDisplay wallsLeft={gameData.availableWalls}/>
         <footer className="footer">Disclaimer: This is a fan-made game based on Quoridor</footer>
         </>
         )
